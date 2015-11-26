@@ -1,0 +1,6 @@
+.btn-purple {
+    background-color: #532F8C
+}
+.navbar-default .navbar-nav > li > a.btn-purple:hover {
+    background-color: #532F8C
+}

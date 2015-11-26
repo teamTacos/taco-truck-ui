@@ -10,13 +10,15 @@
 
 <div class="jumbotron text-center">
   <div class="container">
-    <h1>Hello World</h1>
+    <h1>Taco Truck</h1>
   </div>
 </div>
 <div class="container">
   <div class="alert alert-info text-center" role="alert">
     <div ng-controller="locationsController">
-      <div ng-repeat="location in locations">{{location.name}} - {{location.city}}, {{location.state}}</div>
+      <div ng-repeat="location in locations">
+        <a class=" btn btn-block" href="/items/{{location.id}}">{{location.name}} - {{location.city}}, {{location.state}}</a>
+      </div>
     <div>
   </div>
 </div>
