@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html ng-app="tacoTruck">
 <head>
   <% include ../partials/header.ejs %>
@@ -15,9 +14,9 @@
 </div>
 <div class="container">
   <div class="alert alert-info text-center" role="alert">
-    <div ng-controller="itemsController">
-      <div ng-repeat="item in items">
-        <a class=" btn btn-block" href="/location/{{location_id}}/item/{{item.id}}">{{item.name}} - {{item.description}}</a>
+    <div ng-controller="reviewsController">
+      <div ng-repeat="review in reviews">
+        <a class=" btn btn-block" href="#">{{review.rating}} - {{review.description}}</a>
       </div>
       <div>
       </div>
