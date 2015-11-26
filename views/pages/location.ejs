@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="tacoTruck">
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+<% include ../partials/nav.ejs %>
+
+<div class="jumbotron text-center">
+  <div class="container" ng-controller="locationsByIdController">
+    <h1>{{location.name}}</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="alert alert-info text-center" role="alert">
+    <div ng-controller="itemsController">
+      <div ng-repeat="item in items">
+        <a class=" btn btn-block" href="/items/{{item.id}}">{{item.name}} - {{item.description}}</a>
+      </div>
+      <div>
+      </div>
+    </div>
+
+
+</body>
+</html>
