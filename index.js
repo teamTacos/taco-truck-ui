@@ -9,19 +9,27 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(request, response) {
-  response.render('pages/index');
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
+
+app.use('/*', function(req, res){
+  res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/location/:id', function(request, response){
-  var location_id = request.params.id;
-  response.render('pages/location', {location_id: location_id});
-});
+//app.get('/*', function(request, response) {
+//  response.render('pages/index');
+//});
+//
+//app.get('/location/:id');
 
-app.get('/location/:location_id/item/:item_id', function(request, response){
-  var item_id = request.params.id;
-  response.render('pages/item', {item_id: item_id});
-});
+//app.get('/location/:id', function(request, response){
+//  var location_id = request.params.id;
+//  response.render('pages/location', {location_id: location_id});
+//});
+//
+//app.get('/location/:location_id/item/:item_id', function(request, response){
+//  var item_id = request.params.id;
+//  response.render('pages/item', {item_id: item_id});
+//});
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

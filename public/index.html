@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Getting Started</title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascript/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/custom-bootstrap.css" />
+    <base href="/">
+</head>
+
+<body ng-app="tacoTruck">
+
+<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></span> Do Things <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Go Places</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-right">
+                <a href="#" role="button" class="btn btn-purple">+</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1>Taco Truck HTML</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="alert alert-info text-center" role="alert">
+        <div ng-view></div>
+        <!--<div ng-controller="locationsController">-->
+        <!--<div ng-repeat="location in locations">-->
+        <!--<a class=" btn btn-block" href="/location/{{location.id}}">{{location.name}} - {{location.city}}, {{location.state}}</a>-->
+        <!--</div>-->
+        <!--<div>-->
+    </div>
+</div>
+
+
+</body>
+</html>
