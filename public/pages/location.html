@@ -1,3 +1,16 @@
+<div>
+    <h3>Add Location</h3>
+    <form ng-submit="submitForm()">
+        Name: <input type="text" ng-model="location.name"/>
+        City: <input type="text" ng-model="location.city"/>
+        State: <input type="text" ng-model="location.state"/>
+        Country: <input type="text" ng-model="location.country"/>
+        Description: <input type="text" ng-model="location.description"/>
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+
 <div ng-repeat="location in locations">
     <a class=" btn btn-block" href="/location/{{location.id}}">{{location.name}} - {{location.city}}, {{location.state}}</a>
 </div>

@@ -1,3 +1,12 @@
+<div>
+    <h3>Add Item</h3>
+    <form ng-submit="submitForm()">
+        Name: <input type="text" ng-model="item.name"/>
+        Description: <input type="text" ng-model="item.description"/>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
 <div ng-repeat="item in items">
     <a class=" btn btn-block" href="/location/{{item.location_id}}/item/{{item.id}}">{{item.name}} - {{item.description}}</a>
 </div>
