@@ -11,6 +11,6 @@
     </form>
 </div>
 
-<div ng-repeat="location in locations">
-    <a class=" btn btn-block" href="/location/{{location.id}}">{{location.name}} - {{location.city}}, {{location.state}}</a>
+<div ng-repeat="location in locations track by $index">
+   <a class=" btn btn-block" href="/location/{{location.id}}">{{location.name}} - {{location.city}}, {{location.state}}</a><a href="" ng-click="deleteLocation($index)" class="btn glyphicon glyphicon-remove"></a>
 </div>

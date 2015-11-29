@@ -8,6 +8,7 @@ angular.module('tacoTruck', ['ngRoute'])
 
   .controller('locationController', function($scope, $http, $route, $location, $routeParams) {
 
+    $scope.location = {};
 
     $scope.getAllLocations = function() {
       console.log('getting location information');
@@ -20,7 +21,7 @@ angular.module('tacoTruck', ['ngRoute'])
         })
 
     };
-    $scope.location = {};
+
     $scope.submitForm = function(response){
       console.log('posting location information');
       $http({
@@ -33,6 +34,16 @@ angular.module('tacoTruck', ['ngRoute'])
       }).then(function(response) {
         $scope.locations.push(response.data);
       })
+    };
+
+    $scope.deleteLocation = function(index) {
+      console.log('deleting location ' + index);
+      console.log($scope.locations[index]);
+      $http({
+        method: 'DELETE',
+        url: 'http://localhost:3000/api/v1/locations/' + $scope.locations[index].id
+      });
+      $scope.locations.splice(index, 1);
     };
 
     console.log('locationCont');
@@ -61,7 +72,7 @@ angular.module('tacoTruck', ['ngRoute'])
 
     };
     $scope.location = {};
-    $scope.submitForm = function(){
+    $scope.submitForm = function(response){
       console.log('posting item information');
       $scope.item.location_id = $routeParams.location_id
       $http({
@@ -71,8 +82,20 @@ angular.module('tacoTruck', ['ngRoute'])
           'Content-Type': 'application/json'
         },
         data: $scope.item
+      }).then(function(response) {
+        $scope.items.push(response.data);
       })
-      $scope.items.push(response.data);
+
+    };
+
+    $scope.deleteItem = function(index) {
+      console.log('deleting item ' + index);
+      console.log($scope.items[index]);
+      $http({
+        method: 'DELETE',
+        url: 'http://localhost:3000/api/v1/locations/' + $scope.items[index].location_id + '/items/' + $scope.items[index].id
+      });
+      $scope.items.splice(index, 1);
     };
 
     console.log('itemCont');
@@ -97,7 +120,7 @@ angular.module('tacoTruck', ['ngRoute'])
 
     };
     $scope.location = {};
-    $scope.submitForm = function(){
+    $scope.submitForm = function(response){
       console.log('posting item information');
       $scope.review.item_id = $routeParams.item_id
       $http({
@@ -109,6 +132,11 @@ angular.module('tacoTruck', ['ngRoute'])
         data: $scope.review
       })
       $scope.reviews.push(response.data);
+    };
+
+    $scope.deleteReview = function(index) {
+      console.log('deleting review ' + index);
+      //need to add location_id for api delete path
     };
 
     console.log('reviewCont');

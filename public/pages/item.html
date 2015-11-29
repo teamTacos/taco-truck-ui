@@ -7,6 +7,6 @@
     </form>
 </div>
 
-<div ng-repeat="item in items">
-    <a class=" btn btn-block" href="/location/{{item.location_id}}/item/{{item.id}}">{{item.name}} - {{item.description}}</a>
+<div ng-repeat="item in items track by $index">
+    <a class=" btn btn-block" href="/location/{{item.location_id}}/item/{{item.id}}">{{item.name}} - {{item.description}}</a><a href="" ng-click="deleteItem($index)" class="btn glyphicon glyphicon-remove"></a>
 </div>
