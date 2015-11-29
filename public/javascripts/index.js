@@ -21,7 +21,7 @@ angular.module('tacoTruck', ['ngRoute'])
 
     };
     $scope.location = {};
-    $scope.submitForm = function(){
+    $scope.submitForm = function(response){
       console.log('posting location information');
       $http({
         method: 'POST',
@@ -30,8 +30,9 @@ angular.module('tacoTruck', ['ngRoute'])
           'Content-Type': 'application/json'
         },
         data: $scope.location
+      }).then(function(response) {
+        $scope.locations.push(response.data);
       })
-      //need to update data on page
     };
 
     console.log('locationCont');
@@ -71,7 +72,7 @@ angular.module('tacoTruck', ['ngRoute'])
         },
         data: $scope.item
       })
-      //need to update data on page
+      $scope.items.push(response.data);
     };
 
     console.log('itemCont');
@@ -107,7 +108,7 @@ angular.module('tacoTruck', ['ngRoute'])
         },
         data: $scope.review
       })
-      //need to update data on page
+      $scope.reviews.push(response.data);
     };
 
     console.log('reviewCont');
