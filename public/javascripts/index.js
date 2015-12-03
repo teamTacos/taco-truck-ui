@@ -74,7 +74,7 @@ angular.module('tacoTruck', ['ngRoute'])
     $scope.location = {};
     $scope.submitForm = function(response){
       console.log('posting item information');
-      $scope.item.location_id = $routeParams.location_id
+      $scope.item.location_id = $routeParams.location_id;
       $http({
         method: 'POST',
         url: 'http://localhost:3000/api/v1/locations/' + $routeParams.location_id + '/items',
@@ -93,14 +93,14 @@ angular.module('tacoTruck', ['ngRoute'])
       console.log($scope.items[index]);
       $http({
         method: 'DELETE',
-        url: 'http://localhost:3000/api/v1/locations/' + $scope.items[index].location_id + '/items/' + $scope.items[index].id
+        url: 'http://localhost:3000/api/v1/locations/' + $scope.items[index].location_id + '/items' + $scope.items[index].id
       });
       $scope.items.splice(index, 1);
     };
 
     console.log('itemCont');
     console.log($route);
-    console.log($routeParams)
+    console.log($routeParams);
     //$scope.location = test_locations[0];
     $scope.params = $routeParams;
     $scope.getAllItems();
@@ -122,7 +122,7 @@ angular.module('tacoTruck', ['ngRoute'])
     $scope.location = {};
     $scope.submitForm = function(response){
       console.log('posting item information');
-      $scope.review.item_id = $routeParams.item_id
+      $scope.review.item_id = $routeParams.item_id;
       $http({
         method: 'POST',
         url: 'http://localhost:3000/api/v1/locations/' + $routeParams.location_id + '/items/' + $routeParams.item_id + '/reviews',
@@ -130,7 +130,7 @@ angular.module('tacoTruck', ['ngRoute'])
           'Content-Type': 'application/json'
         },
         data: $scope.review
-      })
+      });
       $scope.reviews.push(response.data);
     };
 
