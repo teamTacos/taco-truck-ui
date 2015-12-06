@@ -12,6 +12,6 @@ var configureSetup  = {
 
 gulp.task('config', function() {
   gulp.src('config.json')
-    .pipe(gulpNgConfig('tacoTruck.config', configureSetup))
+    .pipe(gulpNgConfig('tacoTruck', configureSetup))
     .pipe(gulp.dest('public/javascripts'));
 });

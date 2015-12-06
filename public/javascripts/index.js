@@ -4,13 +4,13 @@ const test_items = [{id:9, location_id:625, name:"Durable Rubber Pants", descrip
                     {id:13, location_id:625, name:"Heavy Duty Steel Bench", description:"Est totam ex temporibus perferendis rerum. Est facilis ea asperiores dolore voluptatem. Qui sed aut repellat porro ut est velit. Et expedita qui ad repudiandae sed aut non.", created_at:"2015-11-23T03:19:35.619Z", updated_at:"2015-11-23T03:19:35.619Z"}];
 const test_reviews = [{id:34, item_id:"9", description:"good stuff", rating:5, created_at:"2015-11-25T21:55:32.883Z", updated_at:"2015-11-25T21:55:32.883Z"}];
 
-angular.module('tacoTruck', ['ngRoute', 'tacoTruck.config'])
+angular.module('tacoTruck', ['ngRoute'])
 
   .controller('locationController', function($scope, $http, $route, $location, $routeParams, tacoTruckApiUrl) {
 
     $scope.location = {};
     $scope.getAllLocations = function() {
-      console.log('getting location information');
+      console.log('getting location information from ' + tacoTruckApiUrl);
       $http({
         method: 'GET',
         url: tacoTruckApiUrl + '/locations'
