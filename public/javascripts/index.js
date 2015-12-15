@@ -8,7 +8,7 @@ angular.module('tacoTruck', ['ngRoute'])
 
   .controller('locationController', function($scope, $http, $route, $location, $routeParams, tacoTruckApiUrl) {
 
-    $('#add').prop('title', 'Add Location');
+    $('#add').text('Add Location');
     $scope.location = {};
     $scope.getAllLocations = function() {
       console.log('getting location information from ' + tacoTruckApiUrl);
@@ -61,7 +61,7 @@ angular.module('tacoTruck', ['ngRoute'])
 
   .controller('itemController', function($scope, $http, $route, $routeParams, tacoTruckApiUrl) {
 
-    $('#add').prop('title', 'Add Menu Item');
+    $('#add').text('Add Menu Item');
     $scope.getAllItems = function() {
       console.log('getting item information');
       $http({
@@ -110,7 +110,7 @@ angular.module('tacoTruck', ['ngRoute'])
 
   .controller('reviewController', function($scope, $http, $route, $routeParams, tacoTruckApiUrl) {
 
-    $('#add').prop('title', 'Add Review');
+    $('#add').text('Add Review');
     $scope.getAllReviews = function() {
       console.log('getting review information');
       $http({
