@@ -8,6 +8,7 @@ angular.module('tacoTruck', ['ngRoute'])
 
   .controller('locationController', function($scope, $http, $route, $location, $routeParams, tacoTruckApiUrl) {
 
+    $('#add').prop('title', 'Add Location');
     $scope.location = {};
     $scope.getAllLocations = function() {
       console.log('getting location information from ' + tacoTruckApiUrl);
@@ -22,6 +23,7 @@ angular.module('tacoTruck', ['ngRoute'])
     };
 
     $scope.submitForm = function(response){
+      $("#addModal").modal('hide');
       console.log('posting location information');
       $http({
         method: 'POST',
@@ -59,6 +61,7 @@ angular.module('tacoTruck', ['ngRoute'])
 
   .controller('itemController', function($scope, $http, $route, $routeParams, tacoTruckApiUrl) {
 
+    $('#add').prop('title', 'Add Menu Item');
     $scope.getAllItems = function() {
       console.log('getting item information');
       $http({
@@ -72,6 +75,7 @@ angular.module('tacoTruck', ['ngRoute'])
     };
     $scope.location = {};
     $scope.submitForm = function(response){
+      $("#addModal").modal('hide');
       console.log('posting item information');
       $scope.item.location_id = $routeParams.location_id;
       $http({
@@ -84,7 +88,6 @@ angular.module('tacoTruck', ['ngRoute'])
       }).then(function(response) {
         $scope.items.push(response.data);
       })
-
     };
 
     $scope.deleteItem = function(index) {
@@ -92,7 +95,7 @@ angular.module('tacoTruck', ['ngRoute'])
       console.log($scope.items[index]);
       $http({
         method: 'DELETE',
-        url: tacoTruckApiUrl + '/locations/' + $scope.items[index].location_id + '/items' + $scope.items[index].id
+        url: tacoTruckApiUrl + '/locations/' + $scope.items[index].location_id + '/items/' + $scope.items[index].id
       });
       $scope.items.splice(index, 1);
     };
@@ -107,8 +110,9 @@ angular.module('tacoTruck', ['ngRoute'])
 
   .controller('reviewController', function($scope, $http, $route, $routeParams, tacoTruckApiUrl) {
 
+    $('#add').prop('title', 'Add Review');
     $scope.getAllReviews = function() {
-      console.log('getting item information');
+      console.log('getting review information');
       $http({
         method: 'GET',
         url: tacoTruckApiUrl + '/locations/' + $routeParams.location_id + '/items/' + $routeParams.item_id + '/reviews'
@@ -120,7 +124,8 @@ angular.module('tacoTruck', ['ngRoute'])
     };
     $scope.location = {};
     $scope.submitForm = function(response){
-      console.log('posting item information');
+      $("#addModal").modal('hide');
+      console.log('posting review information');
       $scope.review.item_id = $routeParams.item_id;
       $http({
         method: 'POST',
@@ -129,13 +134,19 @@ angular.module('tacoTruck', ['ngRoute'])
           'Content-Type': 'application/json'
         },
         data: $scope.review
-      });
-      $scope.reviews.push(response.data);
+      }).then(function(response) {
+        $scope.reviews.push(response.data);
+      })
     };
 
     $scope.deleteReview = function(index) {
       console.log('deleting review ' + index);
-      //need to add location_id for api delete path
+      console.log($scope.reviews[index]);
+      $http({
+        method: 'DELETE',
+        url: tacoTruckApiUrl + '/locations/' + $scope.reviews[index].location_id + '/items/' + $scope.reviews[index].item_id + '/reviews/' + $scope.reviews[index].id
+      });
+      $scope.reviews.splice(index, 1);
     };
 
     console.log('reviewCont');

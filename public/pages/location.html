@@ -1,16 +1,54 @@
 <div>
-    <h3>Add Location</h3>
-    <form ng-submit="submitForm()">
-        Name: <input type="text" ng-model="location.name"/>
-        City: <input type="text" ng-model="location.city"/>
-        State: <input type="text" ng-model="location.state"/>
-        Country: <input type="text" ng-model="location.country"/>
-        Description: <input type="text" ng-model="location.description"/>
-        <button type="submit">Submit</button>
-
-    </form>
+    <h3>Locations</h3>
+</div>
+<div class="list-group">
+    <div ng-repeat="location in locations track by $index" class="list-group-item">
+       <a href="/location/{{location.id}}">{{location.name}} - {{location.city}}, {{location.state}}</a> <a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>
+    </div>
 </div>
 
-<div ng-repeat="location in locations track by $index">
-   <a class=" btn btn-block" href="/location/{{location.id}}">{{location.name}} - {{location.city}}, {{location.state}}</a><a href="" ng-click="deleteLocation($index)" class="btn glyphicon glyphicon-remove"></a>
-</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add Location</h4>
+            </div>
+            <div class="modal-body">
+                <form ng-submit="submitForm()" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="location-name">Name:</label>
+                        <div class="col-sm-8">
+                            <input class="col-sm-10 form-control" id="location-name" type="text" ng-model="location.name" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="location-city">City:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" id="location-city" type="text" ng-model="location.city" placeholder="City">
+                        </div>
+                        <label class="col-sm-1 control-label" for="location-state">State:</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" id="location-state" type="text" ng-model="location.state" placeholder="State">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="location-country">Country:</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" id="location-country" type="text" ng-model="location.country" placeholder="Country">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="location-description">Description:</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="location-description" rows="3" ng-model="location.description" placeholder="Description..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" data-toggle="modal">Add</button>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
