@@ -4,7 +4,8 @@
 
 <div class="list-group">
     <div ng-repeat="item in items track by $index" class="list-group-item">
-        <a href="/location/{{item.location_id}}/item/{{item.id}}">{{item.name}} - {{item.description}}</a> <a href="" ng-click="deleteItem($index)" class="glyphicon glyphicon-remove-circle"></a>
+        <a href="/location/{{item.location_id}}/item/{{item.id}}">{{item.name}} - {{item.description}}</a> <a href="" ng-click="deleteItem($index)" class="glyphicon glyphicon-remove-circle"></a><br>
+        <span>Rating: {{item.reviews_average}} ({{item.reviews_count}} reviews)</span>
     </div>
 </div>
 
