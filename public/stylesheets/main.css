@@ -1,7 +1,9 @@
 .jumbotron {
-  background: #532F8C;
-  color: white;
-  padding-bottom: 80px; }
+  color: #845ac7;
+  font-weight: bold;
+  padding-bottom: 20px;
+  background: #FDF3E7 url("/images/cat.jpg") no-repeat left;
+}
 .jumbotron .btn-primary {
   background: #845ac7;
   border-color: #845ac7; }
