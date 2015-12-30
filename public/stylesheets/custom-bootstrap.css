@@ -1,6 +1,41 @@
 .btn-purple {
-    background-color: #532F8C
+  background-color: #532F8C
 }
 .navbar-default .navbar-nav > li > a.btn-purple:hover {
-    background-color: #532F8C
+  background-color: #532F8C
+}
+
+.item {
+    margin: 12px 12px;
+}
+/*Rating Icons*/
+
+.rating {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  color: white;
+  display: block;
+  font-size: 40px;
+  font-weight: bolder;
+  margin-right: 20px;
+}
+
+.star-5 {
+  background-color: darkgreen;
+}
+.star-4 {
+  background-color: yellowgreen;
+}
+.star-3 {
+  background-color: gold;
+}
+.star-2 {
+  background-color: orange;
+}
+.star-1 {
+  background-color: darkred;
+}
+.star-0 {
+  background-color: gray;
 }
