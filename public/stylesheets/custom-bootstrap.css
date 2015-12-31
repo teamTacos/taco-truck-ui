@@ -74,7 +74,28 @@
 
 /* --- responsive --- */
 
-@media screen and (max-width: 720px) {
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3) {
+    .item {
+        width: 100%;
+        font-size: 18px;
+    }
+    .location-name {
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .item-name {
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
     .item {
         width: 100%;
         font-size: 18px;
