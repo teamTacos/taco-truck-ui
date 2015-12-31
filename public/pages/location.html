@@ -1,9 +1,18 @@
 <div>
-    <h3>Locations</h3>
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><h1>Locations</h1></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-right">
+                <a href="#" role="button" class="btn btn-purple" id="add" title="add" data-toggle="modal" data-target="#addModal">+</a>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="list-group">
     <div ng-repeat="location in locations track by $index" class="list-group-item">
-       <a href="/location/{{location.id}}">{{location.name}} - {{location.city}}, {{location.state}}</a> <a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>
+       <a href="/location/{{location.id}}"><span class="location-name">{{location.name}}</span><span> - {{location.city}}, {{location.state}}</span></a> <a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>
     </div>
 </div>
 

@@ -1,11 +1,39 @@
 <div>
-    <h3>Reviews</h3>
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><h1>Reviews</h1></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-right">
+                <a href="#" role="button" class="btn btn-purple" id="add" title="add" data-toggle="modal" data-target="#addModal">+</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container"><a href="/location/{{params.location_id}}"><< Back to Items</a></div>
 </div>
 
-<div class="list-group">
-    <div ng-repeat="review in reviews" class="list-group-item">
-        <a href="#">{{review.rating}} - {{review.description}}</a> <a href="" ng-click="deleteReview($index)" class="glyphicon glyphicon-remove-circle"></a>
-    </div>
+<!--<div class="list-group">-->
+    <!--<div ng-repeat="review in reviews" class="list-group-item">-->
+        <!--{{review.rating}} - {{review.description}} <a href="" ng-click="deleteReview($index)" class="glyphicon glyphicon-remove-circle"></a>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div >
+    <ul class="list-group">
+        <li ng-repeat="review in reviews track by $index" class="list-group-item col-md-12 col-sm-12 col-xs-12">
+
+                <div class="col-md-1 col-sm-2 col-xs-3 rating">
+                    <div class="star-rating star-{{review.rating}}">{{review.rating}}</div>
+                </div>
+                <div class="col-md-10 col-sm-9 col-xs-11 item">
+                    <span class="review-text">{{review.description}}</span>
+                </div>
+                <div>
+                    <a href="" ng-click="deleteReview($index)" class="glyphicon glyphicon-remove-circle"></a>
+                </div>
+
+        </li>
+    </ul>
 </div>
 
 

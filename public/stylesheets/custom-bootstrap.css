@@ -1,27 +1,42 @@
 .btn-purple {
-  background-color: #532F8C
+  background-color: #532F8C;
+    color: white;
 }
 .navbar-default .navbar-nav > li > a.btn-purple:hover {
   background-color: #532F8C
 }
 
 .item {
-    margin: 12px 12px;
+    display: block;
+    vertical-align: top;
+    height: auto;
+}
+.item a {
+
 }
 /*Rating Icons*/
 
 .rating {
-  width: 60px;
-  height: 60px;
-  border-radius: 5px;
+  padding: 0px;
   color: white;
-  display: block;
-  font-size: 40px;
-  font-weight: bolder;
-  margin-right: 20px;
+    text-align: center;
+}
+.review-link {
+    color: #1A1A1A;
 }
 
+.star-rating {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    display: block;
+    font-size: 40px;
+    font-weight: bolder;
+    margin: auto;
+}
 .star-5 {
+    font-size: 40px;
+    font-weight: bolder;
   background-color: darkgreen;
 }
 .star-4 {
@@ -38,4 +53,38 @@
 }
 .star-0 {
   background-color: gray;
+}
+
+.glyphicon-remove-circle {
+    float: right;
+    margin: 0px;
+}
+
+.location-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+.item-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+.review-text {
+    font-size: 16px
+}
+
+/* --- responsive --- */
+
+@media screen and (max-width: 720px) {
+    .item {
+        width: 100%;
+        font-size: 18px;
+    }
+    .location-name {
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .item-name {
+        font-weight: bold;
+        font-size: 20px;
+    }
 }
