@@ -14,6 +14,9 @@
 .item a {
 
 }
+.item li:hover {
+    background-color: lightsteelblue;
+}
 /*Rating Icons*/
 
 .rating {

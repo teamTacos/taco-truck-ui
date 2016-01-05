@@ -1,2 +1,2 @@
 angular.module('tacoTruck')
-.constant('tacoTruckApiUrl', "https://taco-truck.herokuapp.com/api/v1");
+.constant('tacoTruckApiUrl', "http://localhost:3000/api/v1");
