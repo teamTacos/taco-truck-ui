@@ -39,27 +39,31 @@ body {
     border-bottom: solid;
     border-width: 1px;
     border-color: #C9C9C9;
-    display: block;
+    display: table;
     vertical-align: top;
 }
 
 .location-item-body {
-    padding: 10px 20px 10px 20px;
-    display: inline-block;
-    width: auto;
+    float: left;
+    padding: 10px 0px 10px 10px;
+    display: table-cell;
+    vertical-align: top;
 }
 
 .location-image {
     width: 79px;
     height: 79px;
-    display: inline-block;
+    display: table-cell;
+    float: left;
     vertical-align: top;
 }
 
 .location-rating {
-    margin: 5px 20px;
-    display: inline-block;
+    margin-right: 10px;
+    margin-top: 5px;
+    display: table-cell;
     float: right;
+    text-align: center;
 }
 
 .item a {
@@ -89,7 +93,7 @@ body {
     font-size: 24px;
     font-weight: bolder;
     text-align: center;
-    margin: auto;
+    width: 55px;
 }
 
 .star-5 {
@@ -125,11 +129,11 @@ body {
 
 .location-name {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 12px;
 }
 .item-name {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 12px;
 }
 .review-text {
     font-size: 16px
