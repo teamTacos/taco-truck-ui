@@ -48,6 +48,7 @@ body {
     padding: 10px 0px 10px 10px;
     display: table-cell;
     vertical-align: top;
+    max-width: 50%;
 }
 
 .location-image {
