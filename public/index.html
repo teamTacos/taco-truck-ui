@@ -18,29 +18,55 @@
 
 <body ng-app="tacoTruck">
 
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '882041521930702',
+            xfbml      : true,
+            version    : 'v2.8'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="slide-menu">
+    <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+
+        <li class="active">
+            <a href="/">Account</a>
+        </li>
+
+    </ul>
+
+</div>
+
 <nav class="navbar navbar-default navbar-static-top navbar-inverse">
     <div class="container">
         <ul class="nav navbar-nav">
-            <li class="active">
-                <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+            <li class="handle">
+                <a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
             </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></span> Do Things <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Go Places</a></li>
-                </ul>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="fb-login-container">
+                <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>
             </li>
         </ul>
 
     </div>
 </nav>
 
-<div class="jumbotron text-center">
-    <div class="container">
-        <h1>The Taco Truck</h1>
-    </div>
-</div>
-<div class="container">
+<div class="full-width-container">
     <div class="">
         <div ng-view></div>
         <!--<div ng-controller="locationsController">-->
