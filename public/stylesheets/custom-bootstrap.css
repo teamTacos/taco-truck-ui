@@ -262,10 +262,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
     }
     .location-name {
         font-weight: bold;
-        font-size: 20px;
+        font-size: 13px;
     }
     .item-name {
         font-weight: bold;
-        font-size: 20px;
+        font-size: 13px;
     }
 }
