@@ -2,12 +2,21 @@ body {
     padding: 0px;
 }
 
+.breadcrumb-link {
+    margin-bottom: 10px;
+}
+
 .btn-purple {
   background-color: #532F8C;
     color: white;
 }
+
 .navbar-default .navbar-nav > li > a.btn-purple:hover {
   background-color: #532F8C
+}
+
+.navbar {
+    margin-bottom: 10px;
 }
 
 .container {
@@ -15,9 +24,8 @@ body {
 }
 
 .btn-row {
-    padding: 0 20px;
-    display: block;
     margin: 10px;
+    padding: 0 20px;
 }
 
 .full-width-container {
@@ -25,14 +33,14 @@ body {
     display: block;
 }
 
-.location-list {
+.display-list {
     width: 100%;
     border-top: solid;
     border-width: 1px;
     border-color: #C9C9C9;
 }
 
-.location-item {
+.display-item {
     padding: 0;
     height: 90px;
     width: 100%;
@@ -40,10 +48,9 @@ body {
     border-width: 1px;
     border-color: #C9C9C9;
     display: table;
-    vertical-align: middle;
 }
 
-.location-item-body {
+.display-item-body {
     float: left;
     padding: 10px 0px 10px 10px;
     display: table-cell;
@@ -51,7 +58,7 @@ body {
     width: 50%;
 }
 
-.location-image-conatiner {
+.display-image-conatiner {
     height: inherit;
     width: 25%;
     overflow: hidden;
@@ -59,15 +66,35 @@ body {
     float: left;
 }
 
-.location-image {
+.display-image {
     height: inherit;
 }
 
-.location-rating {
+.display-rating {
     display: table-cell;
     float: right;
     margin: 10px 10px 5px 0;
     text-align: center;
+}
+
+.item-banner {
+    height: 90px;
+    width: 100%;
+    overflow: hidden;
+    display: block;
+    vertical-align: middle;
+    background-image: url("/images/location-test.png");
+    background-size: cover;
+    background-position-x: 0;
+    background-position-y: -75px;
+    opacity: .4;
+    margin-bottom: -80px;
+}
+
+.item-banner-content {
+    display: block;
+    position: relative;
+    top: -10px;
 }
 
 .item a {
@@ -131,14 +158,26 @@ body {
     margin: 0px;
 }
 
-.location-name {
+.display-item-name {
     font-weight: bold;
     font-size: 14px;
 }
-.location-address {
+
+.display-item-details {
     font-weight: normal;
     font-size: 12px;
 }
+
+.display-banner-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.display-banner-details {
+    font-weight: normal;
+    font-size: 14px;
+}
+
 .item-name {
     font-weight: bold;
     font-size: 13px;
@@ -263,11 +302,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
         width: 100%;
         font-size: 18px;
     }
-    .location-name {
-        font-weight: bold;
-        font-size: 13px;
-    }
-    .item-name {
+    .display-item-name {
         font-weight: bold;
         font-size: 13px;
     }

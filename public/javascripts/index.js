@@ -73,7 +73,17 @@ angular.module('tacoTruck', ['ngRoute'])
         })
 
     };
-    $scope.location = {};
+    $scope.getLocationById = function() {
+      console.log('getting location information from ' + tacoTruckApiUrl);
+      $http({
+        method: 'GET',
+        url: tacoTruckApiUrl + '/locations/' + $routeParams.location_id
+      })
+        .then(function(response) {
+          $scope.location = response.data;
+        })
+
+    };
     $scope.submitForm = function(response){
       $("#addModal").modal('hide');
       console.log('posting item information');
@@ -105,6 +115,7 @@ angular.module('tacoTruck', ['ngRoute'])
     console.log($routeParams);
     //$scope.location = test_locations[0];
     $scope.params = $routeParams;
+    $scope.getLocationById();
     $scope.getAllItems();
   })
 

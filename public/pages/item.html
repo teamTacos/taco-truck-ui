@@ -1,34 +1,52 @@
 <div>
     <div class="container">
-        <ul class="nav navbar-nav">
-            <li><h1>Menu Items</h1></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="navbar-right">
-                <a href="#" role="button" class="btn btn-purple" id="add" title="add" data-toggle="modal" data-target="#addModal">+</a>
-            </li>
-        </ul>
+        <div class="breadcrumb-link">
+            <a class="breadcrumb-link" href="/"><< Back to Locations</a>
+        </div>
     </div>
-    <div class="container"><a href="/"><< Back to Locations</a></div>
-</div>
 
-<div >
-    <ul class="list-group item">
-        <li ng-repeat="item in items track by $index" class="list-group-item col-md-12 col-sm-12 col-xs-12">
-            <a href="/location/{{item.location_id}}/item/{{item.id}}" class="item">
-                <div class="col-md-1 col-sm-2 col-xs-2 rating">
-                    <div class="star-rating star-{{item.reviews_average}}">{{item.reviews_average}}</div>
-                    <span class="review-link">({{item.reviews_count}} reviews)</span>
-                </div>
-                <div class="col-md-10 col-sm-9 col-xs-8 item">
-                    <span class="item-name">{{item.name}}</span> <span>- {{item.description}}</span> <br>
-                </div>
-                <div>
-                    <a href="" ng-click="deleteItem($index)" class="glyphicon glyphicon-remove-circle"></a>
+    <div class="item-banner">
+
+    </div>
+    <div class="item-banner-content">
+        <div class="display-item-body">
+            <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
+            <span class="display-banner-name">{{location.name}}</span>  <br />
+            <span class="display-banner-details">{{location.city}}, {{location.state}}</span>
+        </div>
+        <div class="display-rating">
+            <div class="star-rating star-{{location.reviews_average}}">{{location.reviews_average}}</div>
+            <div class="rating-details">{{location.items_count}} Items <br />
+                {{location.reviews_count}} Reviews</div>
+        </div>
+    </div>
+
+
+    <div class="btn-row">
+        <a href="#" role="button" class="btn btn-purple full-width" id="add" title="add" data-toggle="modal" data-target="#addModal">+</a>
+    </div>
+
+    <div class="full-width-container display-list">
+        <div ng-repeat="item in items track by $index">
+            <a href="/location/{{item.location_id}}/item/{{item.id}}">
+                <div class="full-width-container display-item">
+                    <div class="display-image-conatiner">
+                        <img class="display-image" src="/images/location-test.png">
+                    </div>
+                    <div class="display-item-body">
+                        <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
+                        <span class="display-item-name">{{item.name}}</span>  <br />
+                        <span class="display-item-details">{{item.description}}</span>
+                    </div>
+                    <div class="display-rating">
+                        <div class="star-rating star-{{item.reviews_average}}">{{item.reviews_average}}</div>
+                        <div class="rating-details">{{item.reviews_count}} Reviews</div>
+                    </div>
                 </div>
             </a>
-        </li>
-    </ul>
+        </div>
+    </div>
+
 </div>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="addModal">

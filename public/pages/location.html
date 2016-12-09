@@ -3,19 +3,19 @@
         <a href="#" role="button" class="btn btn-purple full-width" id="add" title="add" data-toggle="modal" data-target="#addModal">+</a>
     </div>
 
-    <div class="full-width-container location-list">
+    <div class="full-width-container display-list">
         <div ng-repeat="location in locations track by $index">
             <a href="/location/{{location.id}}">
-            <div class="full-width-container location-item">
-                <div class="location-image-conatiner">
-                    <img class="location-image" src="/images/location-test.png">
+            <div class="full-width-container display-item">
+                <div class="display-image-conatiner">
+                    <img class="display-image" src="/images/location-test.png">
                 </div>
-                <div class="location-item-body">
+                <div class="display-item-body">
                     <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
-                    <span class="location-name">{{location.name}}</span>  <br />
-                    <span class="location-address">{{location.city}}, {{location.state}}</span>
+                    <span class="display-item-name">{{location.name}}</span>  <br />
+                    <span class="display-item-details">{{location.city}}, {{location.state}}</span>
                 </div>
-                <div class="location-rating">
+                <div class="display-rating">
                     <div class="star-rating star-{{location.reviews_average}}">{{location.reviews_average}}</div>
                     <div class="rating-details">{{location.items_count}} Items <br />
                     {{location.reviews_count}} Reviews</div>
