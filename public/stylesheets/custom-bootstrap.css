@@ -34,13 +34,13 @@ body {
 
 .location-item {
     padding: 0;
-    height: 80px;
+    height: 90px;
     width: 100%;
     border-bottom: solid;
     border-width: 1px;
     border-color: #C9C9C9;
     display: table;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 .location-item-body {
@@ -48,22 +48,25 @@ body {
     padding: 10px 0px 10px 10px;
     display: table-cell;
     vertical-align: top;
-    max-width: 50%;
+    width: 50%;
+}
+
+.location-image-conatiner {
+    height: inherit;
+    width: 25%;
+    overflow: hidden;
+    display: table-cell;
+    float: left;
 }
 
 .location-image {
-    width: 79px;
-    height: 79px;
-    display: table-cell;
-    float: left;
-    vertical-align: top;
+    height: inherit;
 }
 
 .location-rating {
-    margin-right: 10px;
-    margin-top: 5px;
     display: table-cell;
     float: right;
+    margin: 10px 10px 5px 0;
     text-align: center;
 }
 
@@ -119,7 +122,7 @@ body {
 
 .rating-details {
     color: black;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
 }
 
@@ -130,11 +133,11 @@ body {
 
 .location-name {
     font-weight: bold;
-    font-size: 13px;
+    font-size: 14px;
 }
 .location-address {
     font-weight: normal;
-    font-size: 11px;
+    font-size: 12px;
 }
 .item-name {
     font-weight: bold;

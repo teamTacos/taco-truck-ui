@@ -7,7 +7,9 @@
         <div ng-repeat="location in locations track by $index">
             <a href="/location/{{location.id}}">
             <div class="full-width-container location-item">
-                <img class="location-image" src="/images/location-test.png">
+                <div class="location-image-conatiner">
+                    <img class="location-image" src="/images/location-test.png">
+                </div>
                 <div class="location-item-body">
                     <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
                     <span class="location-name">{{location.name}}</span>  <br />
