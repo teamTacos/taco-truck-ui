@@ -16,9 +16,9 @@
                     <span class="location-address">{{location.city}}, {{location.state}}</span>
                 </div>
                 <div class="location-rating">
-                    <div class="star-rating star-5">5</div>
-                    <div class="rating-details">10 Items <br />
-                    20 Reviews</div>
+                    <div class="star-rating star-{{location.reviews_average}}">{{location.reviews_average}}</div>
+                    <div class="rating-details">{{location.items_count}} Items <br />
+                    {{location.reviews_count}} Reviews</div>
                 </div>
             </div>
             </a>
