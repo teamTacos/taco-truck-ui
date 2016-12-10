@@ -302,7 +302,12 @@ body.slide {
 
 .swiper-container {
     width: 100%;
-    height: 90px;
+    height: 100px;
+    margin-bottom: 0;
+}
+
+.swiper-slide img {
+    height: 100%;
 }
 
 
