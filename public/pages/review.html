@@ -1,38 +1,78 @@
 <div>
     <div class="container">
-        <ul class="nav navbar-nav">
-            <li><h1>Reviews</h1></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="navbar-right">
-                <a href="#" role="button" class="btn btn-purple" id="add" title="add" data-toggle="modal" data-target="#addModal">+</a>
-            </li>
-        </ul>
+        <div class="breadcrumb-link">
+            <a class="breadcrumb-link" href="/location/{{params.location_id}}"><< Back to Items</a>
+        </div>
     </div>
-    <div class="container"><a href="/location/{{params.location_id}}"><< Back to Items</a></div>
+
+    <div class="item-banner">
+
+    </div>
+    <div class="item-banner-content">
+        <div class="item-banner-body">
+            <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
+            <span class="display-banner-name">{{item.name}}</span>
+
+        </div>
+        <div class="display-rating">
+            <div class="star-rating star-{{item.reviews_average}}">{{item.reviews_average}}</div>
+            <br />
+            <div class="rating-details">{{item.reviews_count}} Reviews</div>
+        </div>
+    </div>
+    <div class="container">
+        <span class="display-banner-details">{{item.description}}</span>
+    </div>
+
+    <div class="btn-row">
+        <a href="#" role="button" class="btn btn-purple full-width" id="add" title="add" data-toggle="modal" data-target="#addModal">+</a>
+    </div>
+
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="swiper-zoom-container"><img src="/images/location-test.png"></div></div>
+            <div class="swiper-slide"><div class="swiper-zoom-container"><img src="/images/location-test.png"></div></div>
+            <div class="swiper-slide"><div class="swiper-zoom-container"><img src="/images/location-test.png"></div></div>
+            <div class="swiper-slide"><div class="swiper-zoom-container"><img src="/images/location-test.png"></div></div>
+            <div class="swiper-slide"><div class="swiper-zoom-container"><img src="/images/location-test.png"></div></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+
+    <div class="full-width-container display-list">
+        <div ng-repeat="review in reviews track by $index">
+            <a href="/location/{{item.location_id}}/item/{{item.id}}">
+                <div class="full-width-container display-item">
+                    <div class="display-image-conatiner">
+                        <img class="display-image" src="/images/location-test.png">
+                    </div>
+                    <div class="display-item-body">
+                        <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
+                        <span class="display-item-name">{{review.author}}</span>  <br />
+                        <span class="display-item-details">{{review.description}}</span>
+                    </div>
+                    <div class="display-rating">
+                        <div class="star-rating star-{{review.rating}}">{{review.rating}}</div>
+                        <div class="rating-details">{{review.images_count}} Images</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
 </div>
 
-<!--<div class="list-group">-->
-    <!--<div ng-repeat="review in reviews" class="list-group-item">-->
-        <!--{{review.rating}} - {{review.description}} <a href="" ng-click="deleteReview($index)" class="glyphicon glyphicon-remove-circle"></a>-->
-    <!--</div>-->
-<!--</div>-->
-
-<div >
-    <ul class="list-group">
-        <li ng-repeat="review in reviews track by $index" class="list-group-item col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-1 col-sm-2 col-xs-2 rating">
-                <div class="star-rating star-{{review.rating}}">{{review.rating}}</div>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-8 item">
-                <span class="review-text">{{review.description}}</span>
-            </div>
-            <div>
-                <a href="" ng-click="deleteReview($index)" class="glyphicon glyphicon-remove-circle"></a>
-            </div>
-        </li>
-    </ul>
-</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 'auto',
+        paginationClickable: true,
+        spaceBetween: 0,
+        zoom: true
+    });
+</script>
 
 
 <div class="modal fade" tabindex="-1" role="dialog" id="addModal">

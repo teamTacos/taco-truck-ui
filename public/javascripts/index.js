@@ -133,6 +133,17 @@ angular.module('tacoTruck', ['ngRoute'])
         })
 
     };
+    $scope.getItemById = function() {
+      console.log('getting item information');
+      $http({
+        method: 'GET',
+        url: tacoTruckApiUrl + '/locations/' + $routeParams.location_id + '/items/' + $routeParams.item_id
+      })
+        .then(function(response) {
+          $scope.item = response.data;
+        })
+
+    };
     $scope.location = {};
     $scope.submitForm = function(response){
       $("#addModal").modal('hide');
@@ -166,6 +177,7 @@ angular.module('tacoTruck', ['ngRoute'])
     //$scope.location = test_locations[0];
     //$scope.item = test_items[0];
     $scope.params = $routeParams;
+    $scope.getItemById();
     $scope.getAllReviews();
   })
 

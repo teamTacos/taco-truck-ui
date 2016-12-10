@@ -12,7 +12,8 @@
     "ejs": "2.3.3",
     "express": "4.13.3",
     "gulp": "^3.9.0",
-    "gulp-ng-config": "^1.2.1"
+    "gulp-ng-config": "^1.2.1",
+    "swiper": "3.4.0"
   },
   "engines": {
     "node": "0.12.7"
