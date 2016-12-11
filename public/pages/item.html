@@ -36,7 +36,7 @@
                     <div class="display-item-body">
                         <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
                         <span class="display-item-name">{{item.name}}</span>  <br />
-                        <span class="display-item-details">{{item.description}}</span>
+                        <span class="display-item-details">{{item.description | limitTo:45}}</span><span class="display-item-more">{{item.description.length > 45 ? ' More...' : ''}}</span>
                     </div>
                     <div class="display-rating">
                         <div class="star-rating star-{{item.reviews_average}}">{{item.reviews_average}}</div>

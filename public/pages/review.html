@@ -4,14 +4,14 @@
             <a class="breadcrumb-link" href="/location/{{params.location_id}}"><< Back to Items</a>
         </div>
     </div>
-
-    <div class="item-banner">
-
-    </div>
     <div class="item-banner-content">
+        <!--<div class="item-banner">-->
+
+        <!--</div>-->
         <div class="item-banner-body">
             <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
-            <span class="display-banner-name">{{item.name}}</span>
+            <div class="display-banner-name">{{item.name}}</div>
+            <div class="display-banner-details">{{item.description}}</div>
 
         </div>
         <div class="display-rating">
@@ -19,9 +19,6 @@
             <br />
             <div class="rating-details">{{item.reviews_count}} Reviews</div>
         </div>
-    </div>
-    <div class="container">
-        <span class="display-banner-details">{{item.description}}</span>
     </div>
 
     <div class="btn-row">
@@ -39,7 +36,6 @@
             <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
             <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
         </div>
-        <div class="swiper-pagination"></div>
     </div>
 
 
@@ -68,10 +64,7 @@
 
 <script>
     var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        slidesPerView: 4,
-        paginationClickable: true,
-        spaceBetween: 0,
+        slidesPerView: 3,
         slidesPerColumnFill: 'column'
     });
 
