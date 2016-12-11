@@ -31,11 +31,13 @@
 
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><div class="swiper-zoom-container"><img src="/images/location-test.png"></div></div>
-            <div class="swiper-slide"><div class="swiper-zoom-container"><img src="/images/location-test.png"></div></div>
-            <div class="swiper-slide"><div class="swiper-zoom-container"><img src="/images/location-test.png"></div></div>
-            <div class="swiper-slide"><div class="swiper-zoom-container"><img src="/images/location-test.png"></div></div>
-            <div class="swiper-slide"><div class="swiper-zoom-container"><img src="/images/location-test.png"></div></div>
+            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
+            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
+            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
+            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
+            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
+            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
+            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
         </div>
         <div class="swiper-pagination"></div>
     </div>
@@ -72,14 +74,25 @@
         spaceBetween: 0,
         slidesPerColumnFill: 'column'
     });
-</script>
 
+</script>
+<div class="modal fade" tabindex="-1" role="dialog" id="imageModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+            <div class="modal-image">
+                <img src="/images/location-test.png">
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
                 <h4 class="modal-title">Add Review</h4>
             </div>
             <div class="modal-body">
