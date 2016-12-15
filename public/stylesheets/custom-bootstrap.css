@@ -60,7 +60,7 @@ body {
 
 .display-image-conatiner {
     height: inherit;
-    width: 25%;
+    width: 100px;
     overflow: hidden;
     display: table-cell;
     float: left;
@@ -315,6 +315,10 @@ body.slide {
     max-height: 90%;
     text-align: center;
     vertical-align: middle;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
 }
 
 /* --- responsive --- */

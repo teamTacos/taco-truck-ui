@@ -1,4 +1,4 @@
-<div ng-controller="locationController">
+<div>
     <div class="btn-row">
         <a href="#" role="button" class="btn btn-purple full-width" id="add" title="add" data-toggle="modal" data-target="#addModal">+</a>
     </div>
@@ -36,7 +36,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
-                <h4 class="modal-title">Add Location</h4>
+                <h4 class="modal-title" ng-cloak>Add Location</h4>
             </div>
             <div class="modal-body">
                 <form ng-submit="submitForm()" class="form-horizontal">

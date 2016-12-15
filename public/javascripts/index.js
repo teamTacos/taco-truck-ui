@@ -4,9 +4,59 @@ const test_items = [{id:9, location_id:625, name:"Durable Rubber Pants", descrip
                     {id:13, location_id:625, name:"Heavy Duty Steel Bench", description:"Est totam ex temporibus perferendis rerum. Est facilis ea asperiores dolore voluptatem. Qui sed aut repellat porro ut est velit. Et expedita qui ad repudiandae sed aut non.", created_at:"2015-11-23T03:19:35.619Z", updated_at:"2015-11-23T03:19:35.619Z"}];
 const test_reviews = [{id:34, item_id:"9", description:"good stuff", rating:5, created_at:"2015-11-25T21:55:32.883Z", updated_at:"2015-11-25T21:55:32.883Z"}];
 
-angular.module('tacoTruck', ['ngRoute'])
+angular.module('tacoTruck', ['ngRoute', 'FacebookProvider'])
 
-  .controller('locationController', function($scope, $http, $route, $location, $routeParams, tacoTruckApiUrl) {
+
+  .run(function ($rootScope) {
+    $rootScope.loginStatus = '';
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId:'882041521930702',
+        status:true,
+        cookie:true,
+        xfbml:true,
+        version: 'v2.8'
+      });
+
+      FB.getLoginStatus(function(response) {
+        $rootScope.fb_status = response.status;
+        if($rootScope.fb_status == 'connected') {
+          $('#add').show();
+        } else {
+          $('#add').hide();
+        }
+        $rootScope.$apply();
+      });
+
+      FB.Event.subscribe('auth.statusChange', function(response) {
+        $rootScope.$broadcast("fb_statusChange", {'status': response.status});
+      });
+
+
+
+    };
+
+    (function (d) {
+      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement('script');
+      js.id = id;
+      js.async = true;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+  })
+
+  .controller('locationController', function($rootScope, $scope, $http, $route, $location, $routeParams, tacoTruckApiUrl) {
+
+    if($rootScope.fb_status == 'connected') {
+      $('#add').show();
+    } else {
+      $('#add').hide();
+    }
 
     $('#add').text('Add Location');
     $scope.location = {};
@@ -59,7 +109,13 @@ angular.module('tacoTruck', ['ngRoute'])
 
   })
 
-  .controller('itemController', function($scope, $http, $route, $routeParams, tacoTruckApiUrl) {
+  .controller('itemController', function($rootScope, $scope, $http, $route, $routeParams, tacoTruckApiUrl) {
+
+    if($rootScope.fb_status == 'connected') {
+      $('#add').show();
+    } else {
+      $('#add').hide();
+    }
 
     $('#add').text('Add Menu Item');
     $scope.getAllItems = function() {
@@ -119,7 +175,13 @@ angular.module('tacoTruck', ['ngRoute'])
     $scope.getAllItems();
   })
 
-  .controller('reviewController', function($scope, $http, $route, $routeParams, tacoTruckApiUrl) {
+  .controller('reviewController', function($rootScope, $scope, $http, $route, $routeParams, tacoTruckApiUrl) {
+
+    if($rootScope.fb_status == 'connected') {
+      $('#add').show();
+    } else {
+      $('#add').hide();
+    }
 
     $('#add').text('Add Review');
     $scope.getAllReviews = function() {
@@ -179,6 +241,35 @@ angular.module('tacoTruck', ['ngRoute'])
     $scope.params = $routeParams;
     $scope.getItemById();
     $scope.getAllReviews();
+  })
+
+  .controller('appCtrl', function(Facebook, $scope, $rootScope, $http, $location) {
+    // $scope.info = {};
+
+    $rootScope.$on("fb_statusChange", function (event, args) {
+      console.log("status changed: " + args.status);
+      if(args.status == 'connected') {
+        $('#add').show();
+      } else {
+        $('#add').hide();
+      }
+      $rootScope.fb_status = args.status;
+      $rootScope.$apply();
+    });
+    // $rootScope.$on("fb_get_login_status", function () {
+    //   Facebook.getLoginStatus();
+    // });
+    // $rootScope.$on("fb_login_failed", function () {
+    //   console.log("fb_login_failed");
+    // });
+    // $rootScope.$on("fb_logout_succeded", function () {
+    //   console.log("fb_logout_succeded");
+    //   $rootScope.id = "";
+    // });
+    // $rootScope.$on("fb_logout_failed", function () {
+    //   console.log("fb_logout_failed!");
+    // });
+
   })
 
   .config(function($routeProvider, $locationProvider) {

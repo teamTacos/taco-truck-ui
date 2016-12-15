@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html ng-app="tacoTruck">
 <head>
     <title>Getting Started</title>
     <meta name="viewport" content="width=device-width">
@@ -11,31 +11,16 @@
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="/node_modules/swiper/dist/js/swiper.jquery.min.js"></script>
     <script type="text/javascript" src="/javascripts/index.js"></script>
+    <script type="text/javascript" src="/javascripts/services.js"></script>
     <script type="text/javascript" src="/javascripts/navigation.js"></script>
     <script type="text/javascript" src="/javascripts/config.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/custom-bootstrap.css" />
     <base href="/">
 </head>
 
-<body ng-app="tacoTruck">
+<body ng-controller="appCtrl">
 
 <div id="fb-root"></div>
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '882041521930702',
-            xfbml      : true,
-            version    : 'v2.8'
-        });
-    };
-
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
 
 <div class="slide-menu">
     <ul>
@@ -57,10 +42,16 @@
             <li class="handle">
                 <a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
             </li>
+            <li>
+                <a href="#" id="status"></a>
+            </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <!--<li class="fb-login-container">-->
+                <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>-->
+            <!--</li>-->
             <li class="fb-login-container">
-                <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>
+                <fb:login-button scope="public_profile,email"  data-auto-logout-link="true"></fb:login-button>
             </li>
         </ul>
 
