@@ -11,7 +11,8 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider'])
     $rootScope.loginStatus = '';
     window.fbAsyncInit = function () {
       FB.init({
-        appId:'882041521930702',
+        //appId:'882041521930702', //development//
+        appId:'881500085318179', //production//
         status:true,
         cookie:true,
         xfbml:true,
