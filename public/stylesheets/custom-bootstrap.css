@@ -60,7 +60,6 @@ body {
 
 .display-image-conatiner {
     height: inherit;
-    width: 100px;
     overflow: hidden;
     display: table-cell;
     float: left;

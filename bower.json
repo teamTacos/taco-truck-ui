@@ -1,0 +1,26 @@
+{
+  "name": "taco-truck-ui",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/teamTacos/taco-truck-ui",
+  "authors": [
+    "Jarod Adair <jarod.adair@manheim.com>"
+  ],
+  "description": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "cloudinary_ng": "~1.0.0",
+    "ng-file-upload-shim": "~12.2.13"
+  }
+}

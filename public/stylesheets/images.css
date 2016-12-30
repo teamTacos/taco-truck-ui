@@ -1,0 +1,14 @@
+.progress-bar{
+    width: 50px;
+    position: relative;
+    height: 2px;
+}
+.progress-bar .progress{
+    height: 2px;
+    background-color: #ff0000;
+    width: 0;
+}
+.preview img, .preview audio, .preview video {
+    max-width: 50px;
+    max-height: 50px;
+}

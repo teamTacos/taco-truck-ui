@@ -43,9 +43,6 @@
         <div ng-repeat="review in reviews track by $index">
             <a href="/location/{{item.location_id}}/item/{{item.id}}">
                 <div class="full-width-container display-item">
-                    <div class="display-image-conatiner">
-                        <img class="display-image" src="/images/location-test.png">
-                    </div>
                     <div class="display-item-body">
                         <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
                         <span class="display-item-name">{{review.author}}</span>  <br />
