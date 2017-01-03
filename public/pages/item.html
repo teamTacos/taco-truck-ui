@@ -74,7 +74,7 @@
                         <label class="col-sm-3 control-label" for="item-image">Image:</label>
                         <div class="col-sm-8">
                             <div class="upload_button_holder" ng-controller="photoUploadCtrl">
-                                <div><a href="#" class="upload_button" ngf-select="uploadFiles($files)">Add Photo</a></div>
+                                <div><a href="#" class="upload_button" ngf-select="uploadFiles($files)" id="item-image">Add Photo</a></div>
                                 <div class="preview" ng-repeat="file in files">
                                     <h3>{{f.$error}} {{f.$errorParam}}</h3>
                                     <!--<div class="progress-bar">-->

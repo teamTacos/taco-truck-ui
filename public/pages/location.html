@@ -8,7 +8,9 @@
             <a href="/location/{{location.id}}">
             <div class="full-width-container display-item">
                 <div class="display-image-conatiner">
-                    <img class="display-image" src="/images/location-test.png">
+                    <cl-image public-id="{{location.thumbnail}}" class="display-image" format="jpg">
+                        <cl-transformation height="100" width="100" crop="fill"/>
+                    </cl-image>
                 </div>
                 <div class="display-item-body">
                     <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
@@ -66,6 +68,35 @@
                         <label class="col-sm-3 control-label" for="location-description">Description:</label>
                         <div class="col-sm-8">
                             <textarea class="form-control" id="location-description" rows="3" ng-model="location.description" placeholder="Description..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="item-image">Image:</label>
+                        <div class="col-sm-8">
+                            <div class="upload_button_holder" ng-controller="photoUploadCtrl">
+                                <div><a href="#" class="upload_button" ngf-select="uploadFiles($files)" id="item-image">Add Photo</a></div>
+                                <div class="preview" ng-repeat="file in files">
+                                    <h3>{{f.$error}} {{f.$errorParam}}</h3>
+                                    <!--<div class="progress-bar">-->
+                                    <!--<div class="progress" style="width: {{file.progress}}%" ng-init="progress=0"></div>-->
+                                    <!--</div>-->
+                                    <div class="form_line">
+                                        <div class="form_controls">
+                                            <div class="preview">
+                                                <img ngf-src="file.result.url || file">
+                                                <input type="text" style="display:none;" name="thumbnail" id="location-thumbnail" ng-value="file.result.public_id">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="info">-->
+                                    <!--<table>-->
+                                    <!--<tr ng-repeat="(key, value) in file.result">-->
+                                    <!--<td> {{key}} </td> <td> {{ value }} </td>-->
+                                    <!--</tr>-->
+                                    <!--</table>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
                         </div>
                     </div>
 

@@ -11,8 +11,8 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
     $rootScope.loginStatus = '';
     window.fbAsyncInit = function () {
       FB.init({
-        //appId:'882041521930702', //development//
-        appId:'881500085318179', //production//
+        appId:'882041521930702', //development//
+        //appId:'881500085318179', //production//
         status:true,
         cookie:true,
         xfbml:true,
@@ -30,7 +30,7 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       });
 
       FB.Event.subscribe('auth.statusChange', function(response) {
-        $rootScope.$broadcast("fb_statusChange", {'status': response.status});
+        $rootScope.$broadcast("fb_statusChange", {'status': response.status, 'facebook_id': response.authResponse.userID});
       });
 
 
@@ -69,6 +69,10 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       })
         .then(function(response) {
           $scope.locations = response.data;
+          for (i = 0; i < $scope.locations.length; i++) {
+            $scope.locations[i].thumbnail_url = $.cloudinary.image($scope.locations[i].thumbnail + '.jpg', { width: 100, height: 100, crop: 'fill' });
+            console.log('images!! ' + $scope.locations[i].thumbnail + '.jpg');
+          }
         })
 
     };
@@ -76,6 +80,9 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
     $scope.submitForm = function(response){
       $("#addModal").modal('hide');
       console.log('posting location information');
+      console.log($scope.location);
+      $scope.location.created_by = $rootScope.fb_userID;
+      $scope.location.thumbnail = $rootScope.photos[0].public_id;
       $http({
         method: 'POST',
         url: tacoTruckApiUrl + '/locations',
@@ -256,6 +263,8 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
         $('#add').hide();
       }
       $rootScope.fb_status = args.status;
+      $rootScope.fb_userID = args.facebook_id;
+      console.log(Object.keys(args));
       $rootScope.$apply();
     });
     // $rootScope.$on("fb_get_login_status", function () {
