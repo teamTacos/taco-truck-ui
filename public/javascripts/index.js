@@ -78,7 +78,13 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       console.log('posting location information');
       console.log($scope.location);
       $scope.location.created_by = $rootScope.fb_userID;
-      $scope.location.thumbnail = $rootScope.photos[0].public_id;
+      console.log('photos== ' + $rootScope.photos);
+      if($rootScope.photos) {
+        $scope.location.thumbnail = $rootScope.photos[0].public_id;
+      } else {
+        $scope.location.thumbnail = '';
+      }
+
       $http({
         method: 'POST',
         url: tacoTruckApiUrl + '/locations',
