@@ -1,0 +1,21 @@
+
+    <a href="/location/{{location.id}}">
+
+            <div class="display-image-conatiner">
+                <cl-image public-id="{{location.thumbnail}}" class="display-image" format="jpg">
+                    <cl-transformation height="100" width="100" crop="fill"/>
+                </cl-image>
+            </div>
+            <div class="display-item-body">
+                <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
+                <span class="display-item-name">{{location.name}}</span>  <br />
+                <span class="display-item-details">{{location.city}}, {{location.state}}</span>
+            </div>
+            <div class="display-rating">
+                <div class="star-rating star-{{location.reviews_average}}">{{location.reviews_average}}</div>
+                <div class="rating-details">{{location.items_count}} Items <br />
+                    {{location.reviews_count}} Reviews</div>
+            </div>
+
+    </a>
+    <div id="delete{{location.id}}" class="delete_button" data-role="panel" ng-click="deleteLocation($index)">Delete</div>

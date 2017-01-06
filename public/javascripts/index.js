@@ -69,10 +69,6 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       })
         .then(function(response) {
           $scope.locations = response.data;
-          for (i = 0; i < $scope.locations.length; i++) {
-            $scope.locations[i].thumbnail_url = $.cloudinary.image($scope.locations[i].thumbnail + '.jpg', { width: 100, height: 100, crop: 'fill' });
-            console.log('images!! ' + $scope.locations[i].thumbnail + '.jpg');
-          }
         })
 
     };
@@ -304,3 +300,10 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       .otherwise({redirectTo: '/blah'});
     $locationProvider.html5Mode(true);
   });
+
+  // .directive('locationItem', function(){
+  //   return {
+  //     restrict: 'E',
+  //     templateUrl: '/templates/location-item.html'
+  //   }
+  // });
