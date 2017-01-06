@@ -356,6 +356,7 @@ body.slide {
 }
 
 .show-delete {
+    overflow: visible;
     -moz-transform: translateX(-100px);
     -ms-transform: translateX(-100px);
     -webkit-transform: translateX(-100px);
