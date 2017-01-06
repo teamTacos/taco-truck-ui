@@ -11,8 +11,8 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
     $rootScope.loginStatus = '';
     window.fbAsyncInit = function () {
       FB.init({
-        appId:'882041521930702', //development//
-        //appId:'881500085318179', //production//
+        //appId:'882041521930702', //development//
+        appId:'881500085318179', //production//
         status:true,
         cookie:true,
         xfbml:true,
@@ -300,10 +300,3 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       .otherwise({redirectTo: '/blah'});
     $locationProvider.html5Mode(true);
   });
-
-  // .directive('locationItem', function(){
-  //   return {
-  //     restrict: 'E',
-  //     templateUrl: '/templates/location-item.html'
-  //   }
-  // });
