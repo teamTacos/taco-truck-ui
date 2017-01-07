@@ -1,0 +1,14 @@
+<a href="/location/{{item.location_id}}/item/{{item.id}}">
+
+        <div class="display-item-body">
+            <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
+            <span class="display-item-name">{{review.author}}</span>  <br />
+            <span class="display-item-details">{{review.description}}</span>
+        </div>
+        <div class="display-rating">
+            <div class="star-rating star-{{review.rating}}">{{review.rating}}</div>
+            <div class="rating-details">{{review.images_count}} Images</div>
+        </div>
+
+</a>
+<div id="delete{{review.id}}" class="delete_button" data-role="panel" ng-click="deleteReview($index)">Delete</div>

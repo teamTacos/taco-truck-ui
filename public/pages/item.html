@@ -27,23 +27,8 @@
     </div>
 
     <div class="full-width-container display-list">
-        <div ng-repeat="item in items track by $index">
-            <a href="/location/{{item.location_id}}/item/{{item.id}}">
-                <div class="full-width-container display-item">
-                    <div class="display-image-conatiner">
-                        <img class="display-image" src="/images/location-test.png">
-                    </div>
-                    <div class="display-item-body">
-                        <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
-                        <span class="display-item-name">{{item.name}}</span>  <br />
-                        <span class="display-item-details">{{item.description | limitTo:45}}</span><span class="display-item-more">{{item.description.length > 45 ? ' More...' : ''}}</span>
-                    </div>
-                    <div class="display-rating">
-                        <div class="star-rating star-{{item.reviews_average}}">{{item.reviews_average}}</div>
-                        <div class="rating-details">{{item.reviews_count}} Reviews</div>
-                    </div>
-                </div>
-            </a>
+        <div ng-repeat="item in items track by $index" class="list-item">
+            <items-list-item></items-list-item>
         </div>
     </div>
 

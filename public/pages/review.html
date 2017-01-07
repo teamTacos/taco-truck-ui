@@ -25,35 +25,11 @@
         <a href="#" role="button" class="btn btn-purple full-width" id="add" title="add" data-toggle="modal" data-target="#addModal">+</a>
     </div>
 
-
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
-            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
-            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
-            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
-            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
-            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
-            <div class="swiper-slide"><a role="button" class="thumb" href="#" data-toggle="modal"  data-target="#imageModal"><img src="/images/location-test.png"></a></div>
-        </div>
-    </div>
-
+    <image-slider></image-slider>
 
     <div class="full-width-container display-list">
-        <div ng-repeat="review in reviews track by $index">
-            <a href="/location/{{item.location_id}}/item/{{item.id}}">
-                <div class="full-width-container display-item">
-                    <div class="display-item-body">
-                        <!--<a href="" ng-click="deleteLocation($index)" class="glyphicon glyphicon-remove-circle"></a>-->
-                        <span class="display-item-name">{{review.author}}</span>  <br />
-                        <span class="display-item-details">{{review.description}}</span>
-                    </div>
-                    <div class="display-rating">
-                        <div class="star-rating star-{{review.rating}}">{{review.rating}}</div>
-                        <div class="rating-details">{{review.images_count}} Images</div>
-                    </div>
-                </div>
-            </a>
+        <div ng-repeat="review in reviews track by $index" class="list-item">
+            <reviews-list-item></reviews-list-item>
         </div>
     </div>
 
