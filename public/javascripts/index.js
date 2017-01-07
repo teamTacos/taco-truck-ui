@@ -255,7 +255,6 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
   })
 
   .controller('appCtrl', function(Facebook, $scope, $rootScope, $http, $location) {
-    // $scope.info = {};
 
     $rootScope.$on("fb_statusChange", function (event, args) {
       console.log("status changed: " + args.status);
@@ -269,40 +268,5 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       console.log(Object.keys(args));
       $rootScope.$apply();
     });
-    // $rootScope.$on("fb_get_login_status", function () {
-    //   Facebook.getLoginStatus();
-    // });
-    // $rootScope.$on("fb_login_failed", function () {
-    //   console.log("fb_login_failed");
-    // });
-    // $rootScope.$on("fb_logout_succeded", function () {
-    //   console.log("fb_logout_succeded");
-    //   $rootScope.id = "";
-    // });
-    // $rootScope.$on("fb_logout_failed", function () {
-    //   console.log("fb_logout_failed!");
-    // });
 
-  })
-
-  .config(function($routeProvider, $locationProvider, cloudinaryProvider) {
-    cloudinaryProvider
-      .set("cloud_name", "dfavubcrx")
-      .set("upload_preset", "xdi4oxap");
-
-    $routeProvider
-      .when('/', {
-        templateUrl: '/pages/location.html',
-        controller: 'locationController'
-      })
-      .when('/location/:location_id', {
-        templateUrl: '/pages/item.html',
-        controller: 'itemController'
-      })
-      .when('/location/:location_id/item/:item_id', {
-        templateUrl: '/pages/review.html',
-        controller: 'reviewController'
-      })
-      .otherwise({redirectTo: '/blah'});
-    $locationProvider.html5Mode(true);
   });
