@@ -154,6 +154,15 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       $("#addModal").modal('hide');
       console.log('posting item information');
       $scope.item.location_id = $routeParams.location_id;
+      $scope.item.created_by = $rootScope.fb_userID;
+      if($rootScope.photos) {
+        $scope.item.thumbnail = $rootScope.photos[0].public_id;
+      } else {
+        $scope.item.thumbnail = '';
+      }
+
+      console.log($scope.item);
+
       $http({
         method: 'POST',
         url: tacoTruckApiUrl + '/locations/' + $routeParams.location_id + '/items',
