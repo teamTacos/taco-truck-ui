@@ -22,7 +22,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
                 <h4 class="modal-title" ng-cloak>Add Location</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" ng-controller="photoUploadCtrl">
                 <form ng-submit="submitForm()" class="form-horizontal">
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="location-name">Name:</label>
@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="item-image">Image:</label>
                         <div class="col-sm-8">
-                            <div class="upload_button_holder" ng-controller="photoUploadCtrl">
+                            <div class="upload_button_holder">
                                 <div><a href="#" class="upload_button" ngf-select="uploadFiles($files)" id="item-image">Add Photo</a></div>
                                 <div class="preview" ng-repeat="file in files">
                                     <h3>{{f.$error}} {{f.$errorParam}}</h3>
@@ -82,7 +82,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancelThumb()">Cancel</button>
                     <button type="submit" class="btn btn-primary" data-toggle="modal">Add</button>
                 </form>
             </div>

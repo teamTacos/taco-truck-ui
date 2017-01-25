@@ -11,8 +11,8 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
     $rootScope.loginStatus = '';
     window.fbAsyncInit = function () {
       FB.init({
-        //appId:'882041521930702', //development//
-        appId:'881500085318179', //production//
+        appId:'882041521930702', //development//
+        //appId:'881500085318179', //production//
         status:true,
         cookie:true,
         xfbml:true,
@@ -231,6 +231,10 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       $("#addModal").modal('hide');
       console.log('posting review information');
       $scope.review.item_id = $routeParams.item_id;
+      $scope.review.created_by = $rootScope.fb_userID;
+
+      console.log($scope.review);
+
       $http({
         method: 'POST',
         url: tacoTruckApiUrl + '/locations/' + $routeParams.location_id + '/items/' + $routeParams.item_id + '/reviews',

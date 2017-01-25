@@ -4,12 +4,15 @@
   "description": "A sample Node.js app using Express 4",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "bower install && gulp config"
   },
   "dependencies": {
     "angular": "^1.4.8",
     "angular-route": "^1.4.8",
+    "blueimp-file-upload": "^9.14.2",
     "bower": "1.8.0",
+    "cloudinary-jquery-file-upload": "^2.1.9",
     "ejs": "2.3.3",
     "express": "4.13.3",
     "gulp": "^3.9.0",
@@ -31,9 +34,5 @@
   "license": "MIT",
   "devDependencies": {
     "jasmine": "^2.3.2"
-  },
-  "scripts": {
-    "start": "node index.js",
-    "postinstall": "bower install && gulp config"
   }
 }

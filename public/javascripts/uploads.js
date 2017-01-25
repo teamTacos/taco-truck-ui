@@ -23,7 +23,7 @@ angular.module('photoAlbumControllers', ['ngFileUpload'])
             data: {
               upload_preset: cloudinary.config().upload_preset,
               tags: 'tacoTruck',
-              context: 'photo=' + $scope.title,
+              context: 'photo=' + $scope.title + '|created-by=' + $rootScope.fb_userID + '|location=' + $routeParams.location_id,
               file: file
             }
           }).progress(function (e) {
@@ -41,6 +41,19 @@ angular.module('photoAlbumControllers', ['ngFileUpload'])
           });
         }
       });
+    };
+
+    $scope.updateContext = function(){
+
+    };
+
+    $scope.cancelThumb = function(){
+      console.log('cancel photo stuff');
+      console.log($rootScope.photos);
+      $rootScope.photos.forEach(function(photo, i){
+        $.cloudinary.delete_by_token(photo.delete_token);
+      });
+      $scope.files = '';
     };
     //});
 
