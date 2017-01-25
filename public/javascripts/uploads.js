@@ -49,10 +49,14 @@ angular.module('photoAlbumControllers', ['ngFileUpload'])
 
     $scope.cancelThumb = function(){
       console.log('cancel photo stuff');
-      console.log($rootScope.photos);
-      $rootScope.photos.forEach(function(photo, i){
-        $.cloudinary.delete_by_token(photo.delete_token);
-      });
+      if($rootScope.photos) {
+        console.log($rootScope.photos);
+        $rootScope.photos.forEach(function(photo, i){
+          $.cloudinary.delete_by_token(photo.delete_token);
+          $rootScope.photos.splice(i, 1);
+        });
+      }
+
       $scope.files = '';
     };
     //});
