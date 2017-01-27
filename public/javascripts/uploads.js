@@ -13,6 +13,7 @@ angular.module('photoAlbumControllers', ['ngFileUpload'])
     //$scope.$watch('files', function() {
     $scope.uploadFiles = function(files){
       console.log('clicky .. clicky ... ');
+      $('#submit-location').attr('disabled', 'disabled');
       $scope.files = files;
       console.log('files= ' + files);
       if (!$scope.files) return;
@@ -35,6 +36,7 @@ angular.module('photoAlbumControllers', ['ngFileUpload'])
             data.context = {custom: {photo: $scope.title}};
             file.result = data;
             $rootScope.photos.push(data);
+            $('#submit-location').removeAttr('disabled');
           }).error(function (data, status, headers, config) {
             console.log('no dice');
             file.result = data;

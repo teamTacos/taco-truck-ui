@@ -69,6 +69,13 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       })
         .then(function(response) {
           $scope.locations = response.data;
+          $scope.locations.forEach(function(location){
+            location.all_images.forEach(function(image){
+              if(image.location_banner === 1) {
+                location.thumbnail = image.cloudinary_id;
+              }
+            })
+          })
         })
 
     };
@@ -79,12 +86,12 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       console.log($scope.location);
       $scope.location.created_by = $rootScope.fb_userID;
       console.log('photos== ' + $rootScope.photos);
-      if($rootScope.photos) {
-        $scope.location.thumbnail = $rootScope.photos[0].public_id;
-      } else {
-        $scope.location.thumbnail = '';
-      }
-
+      // if($rootScope.photos) {
+      //   $scope.location.thumbnail = $rootScope.photos[0].public_id;
+      // } else {
+      //   $scope.location.thumbnail = '';
+      // }
+      //post location data
       $http({
         method: 'POST',
         url: tacoTruckApiUrl + '/locations',
@@ -92,9 +99,48 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
           'Content-Type': 'application/json'
         },
         data: $scope.location
-      }).then(function(response) {
-        $scope.locations.push(response.data);
-      })
+      }).success(function(response) {
+        console.log(response);
+        //$scope.location.id = response.data.id;
+        $scope.new_location_id = response.id;
+        console.log('id:: ' + $scope.new_location_id);
+        $scope.locations.push(response);
+
+        if($rootScope.photos) {
+          console.log('got photos?');
+          console.log($scope.location);
+
+          $http({
+            method: 'POST',
+            url: tacoTruckApiUrl + '/images',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: {location_id: $scope.new_location_id, location_banner: true, cloudinary_id: $rootScope.photos[0].public_id}
+          }).then(function() {
+            $scope.getAllLocations();
+          })
+        }
+      });
+
+      //post image data
+      // if($rootScope.photos) {
+      //   console.log('got photos?');
+      //   console.log($scope.location);
+      //
+      //   $http({
+      //     method: 'POST',
+      //     url: tacoTruckApiUrl + '/images',
+      //     headers: {
+      //       'Content-Type': 'application/json'
+      //     },
+      //     data: {location_id: $scope.new_location_id, location_banner: true, cloudinary_id: $rootScope.photos[0].public_id}
+      //   }).then(function() {
+      //     $scope.getAllLocations();
+      //   })
+      // }
+      //post image data
+
     };
 
     $scope.deleteLocation = function(index) {
