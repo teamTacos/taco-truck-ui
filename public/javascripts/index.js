@@ -11,8 +11,8 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
     $rootScope.loginStatus = '';
     window.fbAsyncInit = function () {
       FB.init({
-        appId:'882041521930702', //development//
-        //appId:'881500085318179', //production//
+        //appId:'882041521930702', //development//
+        appId:'881500085318179', //production//
         status:true,
         cookie:true,
         xfbml:true,
@@ -20,11 +20,14 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       });
 
       FB.getLoginStatus(function(response) {
+        console.log(response);
         $rootScope.fb_status = response.status;
         if($rootScope.fb_status == 'connected') {
           $('#add').show();
+          $rootScope.token = response.authResponse.accessToken;
         } else {
           $('#add').hide();
+          $rootScope.token = '';
         }
         $rootScope.$apply();
       });
@@ -84,7 +87,7 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       $("#addModal").modal('hide');
       console.log('posting location information');
       console.log($scope.location);
-      $scope.location.created_by = $rootScope.fb_userID;
+      $scope.location.user_id = $rootScope.fb_userID;
       console.log('photos== ' + $rootScope.photos);
       // if($rootScope.photos) {
       //   $scope.location.thumbnail = $rootScope.photos[0].public_id;
@@ -96,7 +99,8 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
         method: 'POST',
         url: tacoTruckApiUrl + '/locations',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + $rootScope.token
         },
         data: $scope.location
       }).success(function(response) {
@@ -114,7 +118,8 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
             method: 'POST',
             url: tacoTruckApiUrl + '/images',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + $rootScope.token
             },
             data: {location_id: $scope.new_location_id, location_banner: true, cloudinary_id: $rootScope.photos[0].public_id}
           }).then(function() {
@@ -200,7 +205,7 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       $("#addModal").modal('hide');
       console.log('posting item information');
       $scope.item.location_id = $routeParams.location_id;
-      $scope.item.created_by = $rootScope.fb_userID;
+      $scope.item.user_id = $rootScope.fb_userID;
       if($rootScope.photos) {
         $scope.item.thumbnail = $rootScope.photos[0].public_id;
       } else {
@@ -213,7 +218,8 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
         method: 'POST',
         url: tacoTruckApiUrl + '/locations/' + $routeParams.location_id + '/items',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + $rootScope.token
         },
         data: $scope.item
       }).then(function(response) {
@@ -277,7 +283,7 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       $("#addModal").modal('hide');
       console.log('posting review information');
       $scope.review.item_id = $routeParams.item_id;
-      $scope.review.created_by = $rootScope.fb_userID;
+      $scope.review.user_id = $rootScope.fb_userID;
 
       console.log($scope.review);
 
@@ -285,7 +291,8 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
         method: 'POST',
         url: tacoTruckApiUrl + '/locations/' + $routeParams.location_id + '/items/' + $routeParams.item_id + '/reviews',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + $rootScope.token
         },
         data: $scope.review
       }).then(function(response) {
