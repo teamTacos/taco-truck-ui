@@ -103,7 +103,7 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
           'Authorization': 'Bearer ' + $rootScope.token
         },
         data: $scope.location
-      }).success(function(response) {
+      }).then(function(response) {
         console.log(response);
         //$scope.location.id = response.data.id;
         $scope.new_location_id = response.id;
@@ -126,6 +126,9 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
             $scope.getAllLocations();
           })
         }
+      }, function(response) {
+        console.log(response);
+        $rootScope.error = response.status + ' - ' + response.statusText + ' Token: ' + $rootScope.token;
       });
 
       //post image data
