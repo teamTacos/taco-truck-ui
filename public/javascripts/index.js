@@ -87,7 +87,7 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       $("#addModal").modal('hide');
       console.log('posting location information');
       console.log($scope.location);
-      $scope.location.user_id = $rootScope.fb_userID;
+      //$scope.location.user_id = $rootScope.fb_userID;
       console.log('photos== ' + $rootScope.photos);
       // if($rootScope.photos) {
       //   $scope.location.thumbnail = $rootScope.photos[0].public_id;
@@ -208,7 +208,7 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       $("#addModal").modal('hide');
       console.log('posting item information');
       $scope.item.location_id = $routeParams.location_id;
-      $scope.item.user_id = $rootScope.fb_userID;
+      //$scope.item.user_id = $rootScope.fb_userID;
       if($rootScope.photos) {
         $scope.item.thumbnail = $rootScope.photos[0].public_id;
       } else {
@@ -286,7 +286,7 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
       $("#addModal").modal('hide');
       console.log('posting review information');
       $scope.review.item_id = $routeParams.item_id;
-      $scope.review.user_id = $rootScope.fb_userID;
+      //$scope.review.user_id = $rootScope.fb_userID;
 
       console.log($scope.review);
 
