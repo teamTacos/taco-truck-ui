@@ -62,9 +62,6 @@
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <!--<li class="fb-login-container">-->
-                <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>-->
-            <!--</li>-->
             <li class="fb-login-container">
                 <fb:login-button scope="public_profile,email"  data-auto-logout-link="true"></fb:login-button>
             </li>
@@ -75,13 +72,11 @@
 
 <div class="full-width-container">
     <div class="alert alert-danger" ng-show="error" role="alert">{{error}}</div>
+    <div class="btn-row">
+        <a href="#" role="button" class="btn btn-purple full-width" id="add" title="add" data-toggle="modal" data-target="#addModal">+</a>
+    </div>
     <div class="">
         <div ng-view></div>
-        <!--<div ng-controller="locationsController">-->
-        <!--<div ng-repeat="location in locations">-->
-        <!--<a class=" btn btn-block" href="/location/{{location.id}}">{{location.name}} - {{location.city}}, {{location.state}}</a>-->
-        <!--</div>-->
-        <!--<div>-->
     </div>
 </div>
 
