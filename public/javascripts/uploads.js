@@ -39,6 +39,8 @@ angular.module('photoAlbumControllers', ['ngFileUpload'])
             $('#submit-location').removeAttr('disabled');
           }).error(function (data, status, headers, config) {
             console.log('no dice');
+            console.log(status);
+            console.log(data);
             file.result = data;
           });
         }
