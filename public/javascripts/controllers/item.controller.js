@@ -8,6 +8,13 @@ angular.module('tacoTruck')
       Items.getAll($routeParams.location_id)
         .then(function (response) {
           $scope.items = response.data;
+          $scope.items.forEach(function (item) {
+            item.all_images.forEach(function (image) {
+              if (image.item_banner === 1) {
+                item.thumbnail = image.cloudinary_id;
+              }
+            })
+          })
         })
         .catch(function (data) {
           $rootScope.error = data.status + ' - ' + data.statusText;
@@ -45,7 +52,7 @@ angular.module('tacoTruck')
             Images.create(imageData, $rootScope.token)
               .then(function (response) {
                 console.log(response);
-                $scope.getAllLocations();
+                $scope.getAllItems();
               })
               .catch(function (data) {
                 console.log(data);
