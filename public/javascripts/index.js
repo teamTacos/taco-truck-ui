@@ -7,12 +7,11 @@ const test_reviews = [{id:34, item_id:"9", description:"good stuff", rating:5, c
 angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControllers', 'cloudinary'])
 
 
-  .run(function ($rootScope) {
+  .run(function ($rootScope, facebookAppId) {
     $rootScope.loginStatus = '';
     window.fbAsyncInit = function () {
       FB.init({
-        //appId:'882041521930702', //development//
-        appId:'881500085318179', //production//
+        appId:facebookAppId,
         status:true,
         cookie:true,
         xfbml:true,

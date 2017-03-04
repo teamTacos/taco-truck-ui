@@ -1,3 +1,4 @@
 {
-  "tacoTruckApiUrl": "http://localhost:5000/api/v1"
+  "tacoTruckApiUrl": "http://localhost:5000/api/v1",
+  "facebookAppId": "882041521930702"
 }
