@@ -8,6 +8,7 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
 
 
   .run(function ($rootScope, facebookAppId) {
+    console.log(facebookAppId);
     $rootScope.loginStatus = '';
     window.fbAsyncInit = function () {
       FB.init({
