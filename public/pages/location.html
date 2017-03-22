@@ -2,7 +2,7 @@
 
     <div class="full-width-container display-list">
         <div ng-repeat="location in locations track by $index" class="list-item">
-            <locations-list-item></locations-list-item>
+            <locations-list-item ng-click="viewItems(location.id)"></locations-list-item>
         </div>
     </div>
 

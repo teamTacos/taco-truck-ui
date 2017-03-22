@@ -80,6 +80,9 @@ body {
 
 .display-image {
     height: inherit;
+    display: block;
+    width: 100px;
+    height: 100px;
 }
 
 .display-rating {
@@ -356,6 +359,29 @@ body.slide {
     -webkit-transform: translateX(-100px);
     transform: translateX(-100px);
 }
+
+.favorite-container {
+    display: inline-block;
+    width: 10%;
+}
+
+.add-favorite {
+    z-index: 0;
+    background-image: url("../images/add_to_fav.png");
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+.is-favorite {
+    background-image: url("../images/is_favorite.png");
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
 
 /* --- responsive --- */
 

@@ -1,4 +1,4 @@
-<a href="/location/{{location.id}}">
+<!--<a href="/location/{{location.id}}">-->
 
     <div class="display-image-conatiner">
         <cl-image public-id="{{location.thumbnail}}" class="display-image" format="jpg">
@@ -10,6 +10,10 @@
         <span class="display-item-name">{{location.name}}</span> <br/>
         <span class="display-item-details">{{location.city}}, {{location.state}}</span>
     </div>
+    <div class="favorite-container">
+        <span class="add-favorite" data-location-id="{{location.id}}" ng-click="addToFavorites(location.id, $event)" ng-hide="location.isFavorite"></span>
+        <span class="is-favorite" data-location-id="{{location.id}}" ng-click="removeFromFavorites(location.favoriteId, $event)" ng-show="location.isFavorite"></span>
+    </div>
     <div class="display-rating">
         <div class="star-rating star-{{location.reviews_average}}">{{location.reviews_average}}</div>
         <div class="rating-details">{{location.items_count}} Items <br/>
@@ -17,5 +21,5 @@
         </div>
     </div>
 
-</a>
+<!--</a>-->
 <div id="delete{{location.id}}" class="delete-button" data-role="panel" ng-click="deleteLocation($index)">Delete</div>

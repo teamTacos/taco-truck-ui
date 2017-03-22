@@ -7,7 +7,7 @@ const test_reviews = [{id:34, item_id:"9", description:"good stuff", rating:5, c
 angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControllers', 'cloudinary'])
 
 
-  .run(function ($rootScope, facebookAppId) {
+  .run(function ($rootScope, facebookAppId, Users) {
     console.log(facebookAppId);
     $rootScope.loginStatus = '';
     window.fbAsyncInit = function () {
@@ -22,23 +22,43 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
        FB.getLoginStatus(function(response) {
          console.log(response);
          var facebook_id = '';
+         var user_id = '';
          if (response.authResponse) {
            facebook_id = response.authResponse.userID;
+           Users.getByFBUserId(facebook_id)
+             .then(function(response){
+               user_id = response.data[0].id;
+               console.log('userid=' + user_id);
+               $rootScope.$broadcast("fb_statusChange", {'status': response.status, 'facebook_id': facebook_id, 'user_id': user_id});
+             });
+
+
          }
-         $rootScope.$broadcast("fb_statusChange", {'status': response.status, 'facebook_id': facebook_id});
        });
 
       FB.Event.subscribe('auth.statusChange', function(response) {
         console.log('are we here yet?');
         if (response.status == 'connected') {
           $rootScope.fb_userID = response.authResponse.userID;
+          Users.getByFBUserId($rootScope.fb_userID)
+            .then(function(response){
+              console.log(response);
+              $rootScope.user_id = response.data[0].id;
+
+              console.log('root userid=' + $rootScope.user_id);
+              $rootScope.$broadcast("fb_statusChange", {'status': $rootScope.fb_status, 'facebook_id': $rootScope.fb_userID, 'user_id': $rootScope.user_id});
+            });
           $rootScope.token = response.authResponse.accessToken;
         } else {
           $rootScope.fb_userID = '';
+          $rootScope.user_id = '';
           $rootScope.token = '';
+          console.log('root userid=' + $rootScope.user_id);
+          $rootScope.$broadcast("fb_statusChange", {'status': $rootScope.fb_status, 'facebook_id': $rootScope.fb_userID, 'user_id': $rootScope.user_id});
         }
         $rootScope.fb_status = response.status;
-        $rootScope.$broadcast("fb_statusChange", {'status': $rootScope.fb_status, 'facebook_id': $rootScope.fb_userID});
+        //console.log('root userid=' + $rootScope.user_id);
+        //$rootScope.$broadcast("fb_statusChange", {'status': $rootScope.fb_status, 'facebook_id': $rootScope.fb_userID, 'user_id': $rootScope.user_id});
       });
     };
 
@@ -56,16 +76,46 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
 
   })
 
-  .controller('appCtrl', function(Facebook, $scope, $rootScope, $http, $location) {
+  .controller('appCtrl', function(Facebook, $scope, $rootScope, $http, $location, Users) {
 
     var addButton = $('#add');
     $rootScope.$on("fb_statusChange", function(event, args) {
+      console.log(event);
+      console.log(args);
       if(args.status == 'connected') {
         addButton.show();
+        Users.getById(args.user_id)
+          .then(function(response){
+              console.log(response);
+              user = response.data;
+              console.log(user);
+              $('#status').text(user.first_name + ' ' + user.last_name);
+            }
+          );
+
       } else {
         addButton.hide();
+        $('#status').text('Unknown');
       }
     });
+    //
+    // var user;
+    //
+    // console.log($rootScope.user_id);
+    // console.log($rootScope.fb_userID);
+    // if($rootScope.user_id) {
+    //   Users.getById($rootScope.user_id)
+    //     .then(function(response){
+    //         console.log(response);
+    //         user = response.data[0];
+    //       }
+    //     );
+    //   console.log(user);
+    //   $('#status').text(user.first_name + ' ' + user.last_name);
+    //
+    // }else{
+    //   $('#status').text('Unknown')
+    // }
 
   })
 
@@ -87,6 +137,6 @@ angular.module('tacoTruck', ['ngRoute', 'FacebookProvider', 'photoAlbumControlle
         templateUrl: '/pages/review.html',
         controller: 'reviewController'
       })
-      .otherwise({redirectTo: '/blah'});
+      .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);
   });
